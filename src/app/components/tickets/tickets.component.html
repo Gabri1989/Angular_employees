@@ -1,0 +1,36 @@
+
+<div class="container my-5">
+
+
+    <h1 class="mb-3"  style="text-align: center;">TICKETS</h1>
+<table class="table" *ngIf="tickets && tickets.length > 0" >
+    <thead>
+        <tr>
+            <th><i class="fas fa-ticket-alt" style="color: #FF5733;"></i> Id</th>
+            <th><i  style="color: #E91E63;"></i> Title</th>
+            <th><i class="fas fa-file-alt" style="color: #9C27B0;"></i> Description</th>
+            <th><i class="fas fa-user" style="color: #2196F3;"></i> Requester Name</th>
+            <th><i class="fas fa-envelope" style="color: #00BCD4;"></i> Requester Email</th>
+            <th><i class="fas fa-info-circle" style="color: #4CAF50;"></i> Status</th>
+            <th><i class="far fa-calendar" style="color: #FFC107;"></i> Date created</th>
+            <th><i class="far fa-calendar-check" style="color: #FF9800;"></i> Date resolved</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ticket of tickets">
+            <td>{{ ticket.id }}</td> 
+            <td>{{ ticket.title }}</td>
+            <td>{{ ticket.description }}</td>
+            <td>{{ ticket.requesterName }}</td>
+            <td>{{ ticket.requesterEmail }}</td>
+            <td>{{ ticket.status }}</td>
+            <td>{{ ticket.createdDate }}</td>
+            <td>{{ ticket.resolvedDate }}</td>
+            <td><a [routerLink]="['/tickets/edit/', ticket.id]"><i class="fas fa-edit"></i></a></td>   
+        </tr>
+    </tbody>
+   
+</table>
+<p *ngIf="!tickets || tickets.length <=0">No tickets</p>
+</div>

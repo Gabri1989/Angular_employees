@@ -1,0 +1,94 @@
+<div class="container my-5">
+    <h1 class="mb-3">Add new employee</h1>
+    <div class="row">
+        <div class="col-4">
+          <form (ngSubmit)="addEmployee()" [formGroup]="addEmployeeForm">
+           
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                formControlName="name"
+                [(ngModel)]="addEmployeeReq.name"
+              >
+              <div
+                *ngIf="addEmployeeForm.get('name')?.hasError('required')"
+                class="text-danger"
+              >
+                Name is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                formControlName="email" 
+                [(ngModel)]="addEmployeeReq.email"
+              >
+              <div
+                *ngIf="addEmployeeForm.get('email')?.hasError('email')"
+                class="text-danger"
+              >
+                Invalid email format.
+              </div>
+            </div>
+            
+                  <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="phone"
+                      name="phone"
+                      formControlName="phone"
+                      [(ngModel)]="addEmployeeReq.phone"
+                    >
+                    <div
+                      *ngIf="addEmployeeForm.get('phone')?.hasError('invalidPhone')"
+                      class="text-danger"
+                    >
+                      Phone number should start with '004' and be followed by 10 digits.
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="salary" class="form-label">Salary</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="salary"
+                      name="salary"
+                      formControlName="salary"
+                      [(ngModel)]="addEmployeeReq.salary"
+                    >
+                    <div
+                      *ngIf="addEmployeeForm.get('salary')?.hasError('min')"
+                      class="text-danger"
+                    >
+                      Salary should be greater than or equal to 5000.
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="department" class="form-label">Department</label>
+                    <select class="form-control" id="department" name="department" formControlName="department" [(ngModel)]="addEmployeeReq.department">
+                      <option value="IT">IT</option>
+                      <option value="Security">Security</option>
+                      <option value="Account">Account</option>
+                      <option value="Management">Management</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary" [disabled]="!addEmployeeForm.valid" [ngClass]="{'custom-disabled-button': !addEmployeeForm.valid}">
+                    SAVE
+                </button>
+                
+              </form>
+        </div>
+    </div>
+   
+</div>
+

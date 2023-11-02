@@ -1,0 +1,56 @@
+/* Add this to your component's CSS file */
+.navbar-nav {
+    background-color: #2ac1ef; /* Light blue color */
+    padding: 10px 0;
+  }
+  .navbar-toggler-icon {
+    background-color: white; /* Set the color of the navbar toggler icon */
+  }
+  
+  .nav-link {
+    color: white; /* Set the color of the navigation links */
+  }
+  
+  /* Change the color of the active link */
+  .nav-link.active {
+    color: white;
+    font-weight: bold;
+  }
+  .auth-button {
+    padding: 10px 30px 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .auth-button:hover {
+    background-color: #007bff; /* Change this to the desired hover color */
+    color: #fff; /* Change this to the desired text color on hover */
+  }
+  
+  .logout-button {
+    background-color: #dc3545; /* Customize this for logout button */
+    color: #fff; /* Text color for logout button */
+  }
+  
+  .login-button {
+    background-color: #28a745; /* Customize this for login button */
+    color: #fff; /* Text color for login button */
+  }
+  .user-name {
+    display: inline-block; /* Ensures that margins work properly */
+    margin-left: 10px; /* Adjust as needed */
+    margin-right: 10px; /* Adjust as needed */
+  }
+  
+  .bold-text {
+    font-weight: bold;
+  }
+  .profile-photo {
+    width: 40px; /* Adjust the width */
+    height: 40px; /* Adjust the height */
+    border-radius: 50%; /* Makes the image circular */
+    margin-right: 10px; /* Adjust the spacing */
+  }

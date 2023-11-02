@@ -1,0 +1,36 @@
+<div class="container my-5">
+    <h1 class="mb-3"  style="text-align: center;">EMPLOYEES</h1>
+    <table class="table" *ngIf="employees && employees.length > 0">
+      <thead>
+        <tr>
+          
+          <th><i class="fas fa-id-badge" style="color: #63e4f8;"></i> Id</th>
+          <th (click)="sortByName()">
+          <i class="fas fa-user" style="color: #220389;"></i> Name
+          <i [ngClass]="{'fas fa-sort-alpha-up-alt': sortByNameAscending, 'fas fa-sort-alpha-down': !sortByNameAscending}"></i>
+           </th>
+          <th><i class="fas fa-envelope" style="color: #bc60a5;"></i> Email</th>
+          <th><i class="fas fa-phone" style="color: #57c32c;"></i> Phone</th>
+          <th (click)="toggleSortBySalary()">
+            <i class="fas fa-money-bill" style="color: #FF5733;"></i> Salary
+            <i [ngClass]="{'fas fa-sort-amount-up-alt': sortBySalaryAscending, 'fas fa-sort-amount-down': !sortBySalaryAscending}"></i>
+          </th>
+          <th><i class="fas fa-building" style="color: #6d3acb;"></i> Department</th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.phone }}</td>
+          <td>{{ employee.salary }}</td>
+          <td>{{ employee.department }}</td>
+          <td><a [routerLink]="['/employees/edit/', employee.id]"><i class="fas fa-edit"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="!employees || employees.length <=0">No employees</p>
+  </div>
+  

@@ -1,0 +1,5 @@
+.custom-disabled-button {
+    background-color: #f0f0f0; /* Set a background color for the disabled state */
+    color: #999; /* Set a text color for the disabled state */
+    cursor: not-allowed; /* Change the cursor style to indicate not clickable */
+  }

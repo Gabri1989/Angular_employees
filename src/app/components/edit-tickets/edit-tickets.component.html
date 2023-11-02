@@ -1,0 +1,49 @@
+<div class="ticket-form">
+    <h2>Update Ticket</h2>
+    <form #form="ngForm" (ngSubmit)="updateTicket()">
+      <div class="form-group">
+        <label for="id" class="form-label">Ticket Id</label>
+        <input type="text" class="form-control" id="id-ticket" readonly name="id-ticket" [(ngModel)]="editTicketReq.id" >     
+      </div>
+   
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" [(ngModel)]="editTicketReq.title" name="title" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" [(ngModel)]="editTicketReq.description" name="description" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="requesterName">Requester Name:</label>
+        <input type="text" id="requesterName" [(ngModel)]="editTicketReq.requesterName" name="requesterName" required>
+      </div>
+      <div class="form-group">
+        <label for="requesterEmail">Requester Email:</label>
+        <input type="email" id="requesterEmail" [(ngModel)]="editTicketReq.requesterEmail" name="requesterEmail" required>
+      </div>
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <mat-select id="status" [(ngModel)]="editTicketReq.status" name="status" required>
+          <mat-option *ngFor="let statusOption of ticketStatusOptions" [value]="statusOption">
+            {{ statusOption }}
+          </mat-option>
+        </mat-select>
+      </div>
+      <div class="form-group">
+        <label for="createdDate">Created Date:</label>
+        <input type="text" id="createdDate" [(ngModel)]="editTicketReq.createdDate" name="createdDate" matInput [matDatepicker]="createdDatePicker" required>
+        <mat-datepicker-toggle matSuffix [for]="createdDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #createdDatePicker></mat-datepicker>
+      </div>
+      <div class="form-group">
+        <label for="resolvedDate">Resolved Date:</label>
+        <input type="text" id="resolvedDate" [(ngModel)]="editTicketReq.resolvedDate" name="resolvedDate" matInput [matDatepicker]="resolvedDatePicker">
+        <mat-datepicker-toggle matSuffix [for]="resolvedDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #resolvedDatePicker></mat-datepicker>
+      </div>
+      <button type="submit" class="btn btn-primary mr-4">SAVE</button>
+       <button type="button" class="btn btn-danger" (click)="deleteTicket(editTicketReq.id)">DELETE</button>
+    </form>
+  </div>
+  

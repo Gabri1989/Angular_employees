@@ -1,0 +1,69 @@
+<div class="ticket-form">
+  <h2>Add Ticket</h2>
+  <form [formGroup]="ticketForm" (ngSubmit)="addTicketReq()">
+
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" id="title" formControlName="title" required>
+      <div *ngIf="ticketForm.get('title')?.invalid && ticketForm.get('title')?.touched">
+        <div *ngIf="ticketForm.get('title')?.hasError('required')" class="error-message">Title is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description" required></textarea>
+      <div *ngIf="ticketForm.get('description')?.invalid && ticketForm.get('description')?.touched">
+        <div *ngIf="ticketForm.get('description')?.hasError('required')" class="error-message">Description is required.</div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="requesterName">Requester Name:</label>
+      <input type="text" id="requesterName" formControlName="requesterName" required>
+      <div *ngIf="ticketForm.get('requesterName')?.invalid && ticketForm.get('requesterName')?.touched">
+        <div *ngIf="ticketForm.get('requesterName')?.hasError('required')" class="error-message">Requester Name is required.</div>
+        <div *ngIf="ticketForm.get('requesterName')?.hasError('minlength')" class="error-message">Requester Name should have at least 2 characters.</div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="requesterEmail">Requester Email:</label>
+      <input type="email" id="requesterEmail" formControlName="requesterEmail" required>
+      <div *ngIf="ticketForm.get('requesterEmail')?.invalid && ticketForm.get('requesterEmail')?.touched">
+        <div *ngIf="ticketForm.get('requesterEmail')?.hasError('required')" class="error-message">Requester Email is required.</div>
+        <div *ngIf="ticketForm.get('requesterEmail')?.hasError('email')" class="error-message">Enter a valid email address.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="status">Status:</label>
+      <mat-select id="status" formControlName="status" required>
+        <mat-option *ngFor="let statusOption of ticketStatusOptions" [value]="statusOption">
+          {{ statusOption }}
+        </mat-option>
+      </mat-select>
+      <div *ngIf="ticketForm.get('status')?.invalid && ticketForm.get('status')?.touched">
+        <div *ngIf="ticketForm.get('status')?.hasError('required')" class="error-message">Status is required.</div>
+      </div>
+    </div>
+    
+    
+    <div class="form-group">
+      <label for="createdDate">Created Date:</label>
+      <input type="text" id="createdDate" formControlName="createdDate" matInput [matDatepicker]="createdDatePicker" required>
+      <mat-datepicker-toggle matSuffix [for]="createdDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #createdDatePicker></mat-datepicker>
+      <div *ngIf="ticketForm.get('createdDate')?.invalid && ticketForm.get('createdDate')?.touched">
+        <div *ngIf="ticketForm.get('createdDate')?.hasError('required')" class="error-message">Created Date is required.</div>
+      </div>
+    </div>
+    
+    <!--<div class="form-group">
+      <label for="resolvedDate">Resolved Date:</label>
+      <input type="text" id="resolvedDate" formControlName="resolvedDate" matInput [matDatepicker]="resolvedDatePicker">
+      <mat-datepicker-toggle matSuffix [for]="resolvedDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #resolvedDatePicker></mat-datepicker>
+    </div>-->
+    
+    <button type="submit"  class="btn btn-primary">Add Ticket</button>
+  </form>
+</div>
